@@ -1,0 +1,48 @@
+syntax = "proto3";
+package blogPackage ; 
+
+
+message Blog {
+    int32 id = 1 ;
+    string title = 2 ;
+    string author = 3 ; 
+    string text = 4 ; 
+    string shortText = 5 ;   
+}
+
+message BlogList {
+    repeated Blog blogs = 1 ;
+}
+
+message BlogId {
+    int32 id = 1 ;
+}
+
+message NewBlog {
+    string title = 1 ;
+    string author = 2 ; 
+    string text = 3 ; 
+    string shortText = 4 ;   
+}
+
+message UpdataBlog {
+    string id = 1 ;
+    string title = 2 ;
+    string author = 3 ; 
+    string text = 4 ; 
+    string shortText = 5 ;   
+}
+
+message Result {
+    string message = 1 ;
+}
+
+message Empty {}
+
+service BlogService {
+    rpc getAllBlog (Empty) returns (BlogList);
+    rpc getOneBlog (BlogId ) returns (Blog);
+    rpc createBlog (NewBlog) returns (Result);
+    rpc updateBlog (UpdataBlog) returns (Result);
+    rpc deleteBlog (BlogId) returns (Result);
+}
