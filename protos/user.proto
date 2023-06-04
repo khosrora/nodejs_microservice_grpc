@@ -1,0 +1,25 @@
+syntax = "proto3";
+package userPackage;
+
+
+message Phone {
+    string phoneNumber = 1 ; 
+}
+
+message Code {
+    string userCode = 1 ; 
+    string phoneNumber = 2 ; 
+}
+
+message Result {
+    string message = 1; 
+}
+
+message Token {
+    string accessToken = 1; 
+}
+
+service UserService {
+    rpc GetPhoneNumber (Phone) returns (Result);
+    rpc CheckCodeOtp (Code) returns (Token);
+}

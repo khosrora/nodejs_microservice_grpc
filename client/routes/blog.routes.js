@@ -6,10 +6,11 @@ const {
     updateBlog,
     deleteBlog
 } = require('../controllers/blog.controller');
+const checkUser = require('../middleware/checkUser');
 
 
 
-router.get("/list", listBlog)
+router.get("/list", checkUser, listBlog)
 router.get("/:id", getBlog)
 router.post("/create", createBlog)
 router.put("/update/:id", updateBlog)
